@@ -23,7 +23,6 @@ int main()
     {
         printf("freed\n");
     }
-
     if (*a[b])printf("yes\n");
     if (!*a[b])printf("no\n");
     for (int i = 0; i < 100; i++) {
