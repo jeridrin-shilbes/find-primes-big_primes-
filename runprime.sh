@@ -17,11 +17,15 @@ format()
     fi
     echo " secs"
 }
-gcc serveofprimeV3.c -o primeV3
+if [ "$#" -ne 1 ];then
+echo "process takes only one argument.but $# given"
+exit 1
+fi
+gcc serveofprimeV"$1".c -o primeV"$1"
 declare -a lg
-for ((i=0;i < 2;i++)){
+for ((i=0;i < 11;i++)){
 tm1=$(python3 timeteller.py)
-time ./primeV3  
+time ./primeV"$1"  
 tm2=$(python3 timeteller.py)
 tm_taken=$(( tm2 - tm1 ))
 lg[i]=$tm_taken
