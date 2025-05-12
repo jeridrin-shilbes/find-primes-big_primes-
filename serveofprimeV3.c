@@ -4,10 +4,10 @@
 
 int main()
 {
-    const int a=1000;
+    const int a=10000;
     bool **num = malloc(a * sizeof(bool));  
     
-    if (num == NULL) {
+    if (*num == NULL) {
         printf("Memory allocation failed\n");
         return 1;  
     }
