@@ -5,38 +5,69 @@
 void print(bool *arr,int a,int b);
 int main()
 {
-    int a=1000000;
-    int sqrt_a=sqrt(a)+1;
+    int a=1000;
+    int sqrt_a=sqrt(a);
     bool *num=malloc(sqrt_a * sizeof(bool));
     if(num==NULL)
     {
         printf("memory allocation failed:1");
         return 1;
     }
+    bool *part_num=malloc(sqrt_a*sizeof(bool));
+        if(part_num==NULL)
+        {
+            printf("memory allocation failed:2");
+            return 2;
+        }
     for(int i=0;i<sqrt_a;i++)
     {
         num[i]=true;
     }
-    for(int i=0;i<sqrt_a;i++)
+    for(int i=1;i<sqrt_a;i++)
     {
-        if(i && num[i])
+        if( num[i])
         {
             int j=i+1;
             int current=i;
-            while(current<sqrt_a)
+            while(current+j<sqrt_a)
             {
                 current+=j;
                 num[current]=false;
             }
         }
     }
-
     print(num,0,sqrt_a);
+ 
+    int last=sqrt_a;
+    while(last<a)
+    {
+        // printf("loop_started\n");
+        int end=(a-last>sqrt_a)?last+sqrt_a:a;
+        for(int i=0;i<sqrt_a;i++)part_num[i]=true;
+        for(int i=1;i<sqrt_a;i++)
+        {
+            if(num[i])
+            {
+                int j=i+1;
+                int start=((last+j-1)/j)*j;
+                for(int k=start;k<=end;k+=j)
+                {
+                    part_num[k-last-1]=false;
+                }
+                
+            }
+        }
+
+        print(part_num,last,end);
+        last=end;
+    }
     free(num);
+    free(part_num);
 }
 
 void print(bool *arr,int start,int end)
 {
+    // printf("print_started_from_%d_to_%d\n",start,end);
     int n=end-start;
     for(int i=0;i<n;i++)
     {

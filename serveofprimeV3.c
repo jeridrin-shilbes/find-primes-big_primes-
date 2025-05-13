@@ -25,11 +25,11 @@ int main()
         if(*num[i])
         {
             int j=i+1;
-            int current=i+j;
-            while( (current<a) )
+            int current=i;
+            while( (current+j<a) )
             {
-                *num[current]=false;
                 current+=j;
+                *num[current]=false;
             }
         }
     }
@@ -45,7 +45,7 @@ int main()
         bool prime_found=false;
 
         //checking if line has a prime
-        for(int j=i*10;j<(i*10)+10;j+=2)
+        for(int j=i*10;j<(i*10)+10;j++)
         {
             if(*num[j])
             {

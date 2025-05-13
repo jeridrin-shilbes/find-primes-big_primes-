@@ -24,11 +24,11 @@ int main()
         if(num[i])
         {
             int j=i+1;
-            int current=i+j;
-            while( (current<a) )
+            int current=i;
+            while( (current+j<a) )
             {
-                num[current]=false;
                 current+=j;
+                num[current]=false;
             }
         }
     }
