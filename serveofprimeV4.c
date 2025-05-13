@@ -5,8 +5,8 @@
 void print(bool *arr,int a,int b);
 int main()
 {
-    int a=1000;
-    int sqrt_a=sqrt(a);
+    double a=1000000000;
+    double sqrt_a=sqrt(a);
     bool *num=malloc(sqrt_a * sizeof(bool));
     if(num==NULL)
     {
