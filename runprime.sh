@@ -36,4 +36,3 @@ for tm in "${lg[@]}";do
 (( sum+= "$tm"))
 done
 format $(( sum / ${#lg[@]} ))
-

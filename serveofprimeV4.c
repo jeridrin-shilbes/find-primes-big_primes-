@@ -2,10 +2,12 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
 void print(bool *arr,int a,int b);
+int total_primes=0;
 int main()
 {
-    double a=1000000000;
+    double a=1000000;
     double sqrt_a=sqrt(a);
     bool *num=malloc(sqrt_a * sizeof(bool));
     if(num==NULL)
@@ -43,7 +45,7 @@ int main()
     {
         // printf("loop_started\n");
         int end=(a-last>sqrt_a)?last+sqrt_a:a;
-        for(int i=0;i<sqrt_a;i++)part_num[i]=true;
+        memset(part_num,1,sqrt_a*sizeof(bool));
         for(int i=1;i<sqrt_a;i++)
         {
             if(num[i])
@@ -63,6 +65,8 @@ int main()
     }
     free(num);
     free(part_num);
+    total_primes--;  //the number one is also counted as prime
+    printf("\nTotal primes: %i",total_primes);
 }
 
 void print(bool *arr,int start,int end)
@@ -73,6 +77,7 @@ void print(bool *arr,int start,int end)
     {
         if(*(arr+i))
         {
+            total_primes++;
             printf("\033[31m%d",start+i+1);
         }
         else
